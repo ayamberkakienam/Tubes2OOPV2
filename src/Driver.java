@@ -274,6 +274,12 @@ public class Driver {
   private Vector<Integer> vecx = new Vector<>();
   private Vector<Integer> vecy = new Vector<>();
 
+  /**
+   * Menentukan langkah selanjutnya yang dilalui user dalam menjalani Tour.
+   * @param x Absis posisi user saat ini
+   * @param y Ordinat posisi user saat ini
+   * @return True apabila (x, y) dapat dilalui user
+   */
   private boolean solveMaze(int x, int y) {
     if (!mazeWasHere[x][y] && mazeZoo[x][y] != 2) {
       vecx.addElement(x);
@@ -313,6 +319,9 @@ public class Driver {
     return false;
   }
 
+  /**
+   * Mengarahkan user dalam melaksanakan tur keliling Zoo
+   */
   void tourZoo() {
     //x dan y adalah posisi awal "pengunjung"
     //asumsi pintu masuk dan keluar paling banyak ada 10
