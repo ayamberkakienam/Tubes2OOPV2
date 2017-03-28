@@ -1,13 +1,13 @@
 /**
- * Created by Husnulzaki Wibisono Haryadi (13515005) on 3/27/17.
+ * Created by Diki Ardian W (135150092) on 3/27/17.
  */
 
 package animal;
 
 /** Animal
- * Kelas abstract base class(ABC) untuk Animal
+ * Kelas untuk membuat hewan
  */
-public abstract class Animal {
+public class Animal {
   static {
     /**
      * Akumulasi jumlah makanan yang dikonsumsi tiap jenis hewan per hari
@@ -20,71 +20,306 @@ public abstract class Animal {
   }
   /** Constructor.
    * Melakukan inisialisasi kelas dengan parameter berat,koordinat lokasi x,koordinat lokasi y,dan kejinakan
-   * @param w Berat tubuh hewan
-   * @param x Letak hewan berdasarkan indeks baris map zoo
-   * @param y Letak hewan berdasarkan indeks kolom map zoo
-   * @param tame true apabila hewan telah dijinakkan
-   * @param _content Karakter ASCII yang akan melambangkan hewan pada map zoo
-   */
-  public Animal(float w, int x, int y, boolean tame, char _content) {
-    weight = w;
-    loc_x = x;
-    loc_y = y;
-    tamed = tame;
-    content = _content;
-  }
-  /** Menetapkan nama dari sebuah Animal
-   * @param names Nama hewan
-   */
-  public void SetName(String names) {
-    name = names;
-  }
-  /**
-   * Setter habitat hidup hewan
-   * @param habitat Habitat hidup hewan
-   */
-  public void SetHabitat(String habitat) {
-    this.habitat = habitat;
-  }
-  /** Menetapkan lokasi dari sebuah objek Animal
+   * @param hewan nama spesies hewan
    * @param x Letak hewan berdasarkan indeks baris map zoo
    * @param y Letak hewan berdasarkan indeks kolom map zoo
    */
-  public void SetLoc(int x, int y) {
+  public Animal(String hewan, int x, int y) {
+    switch (hewan) {
+      case "Bekantan" :
+      {
+        name = "Bekantan";
+        habitat = "Land";
+        weight = 50;
+        type = "Herbivore";
+        tamed = true;
+        diet = "Fruit";
+        legs = 2;
+        content = 'A';
+        suara = "Uuuuuuuu";
+      }
+      case "BurungHantu" :
+      {
+        name = "Burung Hantu";
+        habitat = "Air";
+        weight = 2;
+        type = "Carnivore";
+        tamed = true;
+        diet = "Meat";
+        legs = 2;
+        content = 'B';
+        suara = "Kur kur kur";
+      }
+      case "Codot" :
+      {
+        name = "Codot";
+        habitat = "Air";
+        weight = (float)0.5;
+        type = "Herbivore";
+        tamed = false;
+        diet = "Fruit";
+        legs = 2;
+        content = 'C';
+        suara = "Cit cit cit";
+      }
+      case "Elang" :
+      {
+        name = "Elang";
+        habitat = "Air";
+        weight = 3;
+        type = "Carnivore";
+        tamed = false;
+        diet = "Meat";
+        legs = 2;
+        content = 'D';
+        suara = "Koak koakk koakk";
+      }
+      case "Gajah" :
+      {
+        name = "Gajah";
+        habitat = "Land";
+        weight = 3500;
+        type = "Herbivore";
+        tamed = true;
+        diet = "Leaf";
+        legs = 4;
+        content = 'E';
+        suara = "Ngoett";
+      }
+      case "Gorilla" :
+      {
+        name = "Gorilla";
+        habitat = "Land";
+        weight = 200;
+        type = "Herbivore";
+        tamed = false;
+        diet = "Fruit";
+        legs = 2;
+        content = 'C';
+        suara = "Huhahuha";
+      }
+      case "Harimau" :
+      {
+        name = "Harimau";
+        habitat = "Land";
+        weight = 450;
+        type = "Carnivore";
+        tamed = false;
+        diet = "Meat";
+        legs = 4;
+        content = 'G';
+        suara = "Roarrrr";
+      }
+      case "Hiu" :
+      {
+        name = "Hiu";
+        habitat = "Water";
+        weight = 100;
+        type = "Carnivore";
+        tamed = true;
+        diet = "Meat";
+        legs = 0;
+        content = 'H';
+        suara = "Shush shush";
+      }
+      case "IkanTerbang" :
+      {
+        name = "Ikan Terbang";
+        habitat = "Water";
+        weight = 2;
+        type = "Carnivore";
+        tamed = true;
+        diet = "Insect";
+        legs = 0;
+        content = 'I';
+        suara = "Cepok cepok cepok";
+      }
+      case "Jerapah" :
+      {
+        name = "Jerapah";
+        habitat = "Land";
+        weight = 500;
+        type = "Herbivore";
+        tamed = true;
+        diet = "Leaf";
+        legs = 4;
+        content = 'J';
+        suara = "Ngoet ngoet";
+      }
+      case "Kancil" :
+      {
+        name = "Kancil";
+        habitat = "Land";
+        weight = 60;
+        type = "Herbivore";
+        tamed = true;
+        diet = "Leaf";
+        legs = 4;
+        content = 'K';
+        suara = "Ngik ngik ngik";
+      }
+      case "Kepik" :
+      {
+        name = "Kepik";
+        habitat = "Air";
+        weight = (float)0.01;
+        type = "Herbivore";
+        tamed = true;
+        diet = "Nectar";
+        legs = 6;
+        content = 'L';
+        suara = "Krik krik krik";
+      }
+      case "Kepiting" :
+      {
+        name = "Kepiting";
+        habitat = "Water";
+        weight = 1;
+        type = "Omnivore";
+        tamed = true;
+        diet = "Plankton";
+        legs = 10;
+        content = 'M';
+        suara = "Kuikk kuikk";
+      }
+      case "KumbangHutan" :
+      {
+        name = "Kumbang Hutan";
+        habitat = "Air";
+        weight = (float)0.05;
+        type = "Herbivore";
+        tamed = true;
+        diet = "Nectar";
+        legs = 6;
+        content = 'N';
+        suara = "Kruk kruk kruk";
+      }
+      case "KupuKupu" :
+      {
+        name = "KupuKupu";
+        habitat = "Air";
+        weight = (float)0.03;
+        type = "Herbivore";
+        tamed = true;
+        diet = "Nectar";
+        legs = 6;
+        content = 'O';
+        suara = "Wir wir";
+      }
+      case "Lobster" :
+      {
+        name = "Lobster";
+        habitat = "Water";
+        weight = (float)0.5;
+        type = "Omnivore";
+        tamed = true;
+        diet = "Plankton";
+        legs = 10;
+        content = 'P';
+        suara = "Crek crek crek";
+      }
+      case "LumbaLumba" :
+      {
+        name = "Lumba lumba";
+        habitat = "Water";
+        weight = 100;
+        type = "Omnivore";
+        tamed = true;
+        diet = "Plankton";
+        legs = 0;
+        content = 'Q';
+        suara = "Cet cet cet";
+      }
+      case "MacanTutul" :
+      {
+        name = "Macan Tutul";
+        habitat = "Land";
+        weight = 350;
+        type = "Carnivore";
+        tamed = true;
+        diet = "Meat";
+        legs = 4;
+        content = 'R';
+        suara = "Aummmm";
+      }
+      case "OwaOwa" :
+      {
+        name = "OwaOwa";
+        habitat = "Land";
+        weight = 70;
+        type = "Herbivore";
+        tamed = true;
+        diet = "Fruit";
+        legs = 2;
+        content = 'S';
+        suara = "Huhuhuhu";
+      }
+      case "PausSperma" :
+      {
+        name = "Paus Sperma";
+        habitat = "Water";
+        weight = 7000;
+        type = "Omnivore";
+        tamed = true;
+        diet = "Plankton";
+        legs = 0;
+        content = 'T';
+        suara = "Srosh srosh";
+      }
+      case "Piranha" :
+      {
+        name = "Piranha";
+        habitat = "Water";
+        weight = (float)0.7;
+        type = "Carnivore";
+        tamed = false;
+        diet = "Meat";
+        legs = 0;
+        content = 'U';
+        suara = "Kraus kraus";
+      }
+      case "Platypus" :
+      {
+        name = "Platypus";
+        habitat = "Land and Water";
+        weight = 5;
+        type = "Carnivore";
+        tamed = true;
+        diet = "Insect";
+        legs = 4;
+        content = 'Z';
+        suara = "Krr krr";
+      }
+      case "Singa" :
+      {
+        name = "Singa";
+        habitat = "Land";
+        weight = 400;
+        type = "Carnivore";
+        tamed = false;
+        diet = "Meat";
+        legs = 4;
+        content = 'W';
+        suara = "Groarrr";
+      }
+      case "SingaLaut" :
+      {
+        name = "Singa Laut";
+        habitat = "Water";
+        weight = 70;
+        type = "Carnivore";
+        tamed = false;
+        diet = "Meat";
+        legs = 0;
+        content = 'Y';
+        suara = "Ou ou ou";
+      }
+    }
+    fodder = (float)0.025*weight;
     loc_x = x;
     loc_y = y;
-  }
-  /** Menetapkan makanan dari sebuah objek Animal
-   * @param food Jenis makanan hewan
-   */
-  public void SetDiet(String food) {
-    diet = food;
-  }
-  /**
-   * Setter tipe diet hewan
-   * @param type Tipe diet hewan
-   */
-  public void SetType(String type) {
-    this.type = type;
-  }
-  /** Menetapkan kejinakan dari sebuah objek Animal
-   * @param tame True apabila hewan telah dijinakkan
-   */
-  public void SetTamed(boolean tame) {
-    tamed = tame;
-  }
-  /** Menetapkan jumlah kaki dari sebuah objek Animal
-   * @param nleg Jumlah kaki hewan
-   */
-  public void SetLeg(int nleg) {
-    legs = nleg;
-  }
-  /**
-   * Setter karakter yang akan mewakili posisi hewan pada Map Zoo
-   * @param _content Karakter yang mewakili hewan pada Map Zoo
-   */
-  public void SetContent(char _content) {
-    content =  _content;
+    n_animal++;
+    consumerate += fodder;
   }
   /** Menghasilkan nama hewan
    * @return string suara hewan.
@@ -187,11 +422,13 @@ public abstract class Animal {
     System.out.println("Number of Legs : "+legs);
   }
   /**
-   * Fungsi abstrak, mengembalikan string yang menggambarkan
+   * Mengembalikan string yang menggambarkan
    * interaksi user dengan hewan
-   * @return String sesuai implementasi pada kelas riil turunan
+   * @return suara
    */
-  abstract public String Interact();
+  public String Interact(){
+    return suara;
+  }
   /**
    * Mengembalikan berat total makanan yang dikonsumsi semua hewan per hari
    * @return Berat makanan yang dikonsumsi semua jenis hewan pada map zoo per hari
@@ -251,8 +488,13 @@ public abstract class Animal {
    */
   protected char content;
   /**
-   * Jumlah hewan yang telah di construct
+   * Suara hewan
    */
+  protected String suara;
+  /**
+   * Suara hewan yang telah di construct
+   */
+
   static public int n_animal;
   /**
    * Akumulasi jumlah makanan yang dikonsumsi tiap jenis hewan per hari
