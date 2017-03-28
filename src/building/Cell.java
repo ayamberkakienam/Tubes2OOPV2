@@ -1,15 +1,16 @@
 package building;
 
 /**
+ * Created by Husnulzaki Wibisono Haryadi (13515005) on 3/28/17.
+ */
+
+/**
  * Class Building.Building.Cell.
  * Merepresentasikan petak yang ada pada Virtual Zoo.
- * <p>
- * Created by um on 27/03/17.
  */
 public class Cell {
-
-  private final int loc_x;
-  private final int loc_y;
+  private final int locX;
+  private final int locY;
   private char content;
   private boolean caged;
   private boolean entrance;
@@ -19,11 +20,12 @@ public class Cell {
    * Default class constructor.
    */
   public Cell() {
-    loc_x = 0;
-    loc_y = 0;
+    locX = 0;
+    locY = 0;
     content = '-';
     caged = false;
   }
+
   /**
    * Class constructor dengan parameter absis dan ordinat
    * dari lokasi cell.
@@ -33,108 +35,115 @@ public class Cell {
    */
   public Cell(String bangunan, int i, int j) {
     switch (bangunan) {
-      case ("Park") :
-      {
+      case ("Park"): {
         content = '.';
         entrance = false;
         exit = false;
+        break;
       }
-      case ("Restaurant") :
-      {
+      case ("Restaurant"): {
         content = '$';
         entrance = false;
         exit = false;
+        break;
       }
-      case ("Road") :
-      {
+      case ("Road"): {
         content = '+';
         entrance = false;
         exit = false;
+        break;
       }
-      case ("RoadEntrance") :
-      {
+      case ("RoadEntrance"): {
         content = '=';
         entrance = true;
         exit = false;
+        break;
       }
-      case ("RoadExit") :
-      {
+      case ("RoadExit"): {
         content = '=';
         entrance = false;
         exit = true;
+        break;
       }
-      case ("LandHabitat") :
-      {
+      case ("LandHabitat"): {
         content = '#';
         entrance = false;
         exit = false;
+        break;
       }
-      case ("WaterHabitat") :
-      {
+      case ("WaterHabitat"): {
         content = '~';
         entrance = false;
         exit = false;
+        break;
       }
-      case ("AirHabitat") :
-      {
+      case ("AirHabitat"): {
         content = '*';
         entrance = false;
         exit = false;
+        break;
+      }
+      default:
+      {
+        content = '-';
+        entrance = false;
+        exit = false;
+        break;
       }
     }
     caged = false;
-    loc_x = i;
-    loc_y = j;
+    locX = i;
+    locY = j;
   }
+
   /**
-   * Mendapatkan content
+   * Mendapatkan content.
    *
    * @return content cell
    */
   public char getContent() {
     return content;
   }
+
   /**
-   * Mendapatkan lokasi absis
+   * Mendapatkan lokasi absis.
    *
    * @return lokasi absis cell
    */
   public int getX() {
-    return loc_x;
+    return locX;
   }
+
   /**
-   * Mendapatkan lokasi ordinat
+   * Mendapatkan lokasi ordinat.
    *
    * @return lokasi ordinat cell
    */
   public int getY() {
-    return loc_y;
+    return locY;
   }
-  /** @brief Mengembalikan nilai boolean jika habitat terletak dalam kandang atau tidak
+
+  /**
+   * True apabila cell berlokasi di dalam Cage.
    * @return boolean caged.
    */
   public boolean isCaged() {
     return caged;
   }
-  /** @brief Memberikan atau mengubah nilai boolean dari caged
-   *
+
+  /**
+   * Memberikan atau mengubah nilai boolean dari caged.
    */
   public void setCaged() {
     caged = true;
   }
+
   /**
-   * Menampilkan informasi lokasi dan content cell
+   * Menampilkan informasi lokasi dan content cell.
    */
   private void display() {
     System.out.println("x : " + getX());
     System.out.println("y : " + getY());
     System.out.println("content : " + getContent());
-  }
-  /**
-   * Mengembalikan content dari cell
-   * @return karakter content pada cell
-   */
-  public char render() {
-    return getContent();
   }
 }

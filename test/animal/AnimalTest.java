@@ -1,6 +1,9 @@
 package animal;
 
-import org.junit.jupiter.api.BeforeEach;
+/**
+ * Created by Husnulzaki Wibisono Haryadi (13515005) on 3/28/17.
+ */
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

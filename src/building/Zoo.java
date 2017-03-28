@@ -5,171 +5,186 @@ import animal.Animal;
 import java.util.Random;
 
 /**
- * Created by um-13515026
- * on 28/03/17.
+ * Created by Husnulzaki Wibisono Haryadi (13515005) on 3/28/17.
  */
 public class Zoo {
-
-  protected int size_brs;
-  protected int size_kol;
-  protected int num_cage;
-  protected Cell[][] m_cell;
-  protected Cage[] l_cage;
-  protected Animal[] l_animal;
+  private static final String ANSI_RESET = "\u001B[0m";
+  private static final String ANSI_BLACK = "\u001B[30m";
+  private static final String ANSI_RED = "\u001B[31m";
+  private static final String ANSI_GREEN = "\u001B[32m";
+  private static final String ANSI_YELLOW = "\u001B[33m";
+  private static final String ANSI_BLUE = "\u001B[34m";
+  private static final String ANSI_PURPLE = "\u001B[35m";
+  private static final String ANSI_CYAN = "\u001B[36m";
+  private static final String ANSI_WHITE = "\u001B[37m";
+  //  private int sizeBrs;
+//  private int sizeKol;
+//  private int numCage;
+//  private Cell[][] matCell;
+//  private Cage[] listCage;
+//  private Animal[] listAnimal;
+  private int sizeBrs;
+  private int sizeKol;
+  private int numCage;
+  private Cell[][] matCell;
+  private Cage[] listCage;
+  private Animal[] listAnimal;
 
   /**
-   * Constructor
+   * Constructor.
    * Melakukan inisialisasi kelas Zoo
    *
-   * @param size_brs ukuran baris (lebar) Zoo
-   * @param size_kol ukuran kolom (panjang) Zoo
-   * @param num_cage banyaknya kandang pada Zoo
+   * @param sizeBrs ukuran baris (lebar) Zoo
+   * @param sizeKol ukuran kolom (panjang) Zoo
+   * @param numCage banyaknya kandang pada Zoo
    */
-  public Zoo(int size_brs, int size_kol, int num_cage) {
-    this.size_brs = size_brs;
-    this.size_kol = size_kol;
-    this.num_cage = num_cage;
+  public Zoo(int sizeBrs, int sizeKol, int numCage) {
+    this.sizeBrs = sizeBrs;
+    this.sizeKol = sizeKol;
+    this.numCage = numCage;
 
-    m_cell = new Cell[size_brs][size_kol];
-    l_cage = new Cage[num_cage];
-    l_animal = new Animal[300];
-
+    matCell = new Cell[sizeBrs][sizeKol];
+    listCage = new Cage[numCage];
+    listAnimal = new Animal[300];
   }
 
   /**
-   * Getter untuk lebar Zoo
+   * Getter untuk lebar Zoo.
    *
    * @return lebar Zoo
    */
   public int getSizeBrs() {
-    return size_brs;
+    return sizeBrs;
   }
 
   /**
-   * Getter untuk panjang Zoo
+   * Getter untuk panjang Zoo.
    *
    * @return panjang Zoo
    */
   public int getSizeKol() {
-    return size_kol;
+    return sizeKol;
   }
 
   /**
-   * Getter untuk banyaknya Cage
+   * Getter untuk banyaknya Cage.
    *
    * @return banyaknya Cage
    */
   public int getNumCage() {
-    return num_cage;
+    return numCage;
   }
 
   /**
-   * Getter untuk matrix Cell
+   * Getter untuk matrix Cell.
    *
    * @return matrix Cell
    */
   public Cell[][] getCell() {
-    return m_cell;
+    return matCell;
   }
 
   /**
-   * Getter untuk array Cage
+   * Getter untuk array Cage.
    *
    * @return array Cage
    */
   public Cage[] getCage() {
-    return l_cage;
+    return listCage;
   }
 
   /**
-   * Getter untuk array Animal
+   * Getter untuk array Animal.
    *
    * @return array Animal
    */
   public Animal[] getAnimal() {
-    return l_animal;
+    return listAnimal;
   }
 
   /**
-   * Method untuk membuat Animal bergerak
+   * Method untuk membuat Animal bergerak.
    */
   public void moveAnimal() {
-    int x, y, move, j;
+    int x;
+    int y;
+    int move;
+    int j;
     boolean moved = false;
     boolean dist = true;
-    for (int i = 0; i < Animal.GetNAnimal(); i++) {
+    for (int i = 0; i < Animal.getNAnimal(); i++) {
       do {
         Random rand = new Random();
         move = rand.nextInt(5) + 1;
-        x = l_animal[i].GetLocX();
-        y = l_animal[i].GetLocY();
+        x = listAnimal[i].getLocX();
+        y = listAnimal[i].getLocY();
         switch (move) {
           // CHECK CELL APAKAH CAGED
           case 1:
             x--;
-            l_animal[i].setLoc(x, y);
+            listAnimal[i].setLoc(x, y);
             moved = true;
             j = 0;
-            while (j < Animal.GetNAnimal() && dist) {
+            while (j < Animal.getNAnimal() && dist) {
               if (i != j) {
-                dist = l_animal[i].DistLoc(l_animal[j]);
+                dist = listAnimal[i].DistLoc(listAnimal[j]);
               }
               j++;
             }
-            if (!(m_cell[x][y].isCaged()) || !dist) {
+            if (!(matCell[x][y].isCaged()) || !dist) {
               x++;
-              l_animal[i].setLoc(x, y);
+              listAnimal[i].setLoc(x, y);
               moved = false;
             }
             break;
           case 2:
             y++;
-            l_animal[i].setLoc(x, y);
+            listAnimal[i].setLoc(x, y);
             moved = true;
             j = 0;
-            while (j < Animal.GetNAnimal() && dist) {
+            while (j < Animal.getNAnimal() && dist) {
               if (i != j) {
-                dist = l_animal[i].DistLoc(l_animal[j]);
+                dist = listAnimal[i].DistLoc(listAnimal[j]);
               }
               j++;
             }
-            if (!(m_cell[x][y].isCaged()) || !dist) {
+            if (!(matCell[x][y].isCaged()) || !dist) {
               y--;
-              l_animal[i].setLoc(x, y);
+              listAnimal[i].setLoc(x, y);
               moved = false;
             }
             break;
           case 3:
             x++;
-            l_animal[i].setLoc(x, y);
+            listAnimal[i].setLoc(x, y);
             moved = true;
             j = 0;
-            while (j < Animal.GetNAnimal() && dist) {
+            while (j < Animal.getNAnimal() && dist) {
               if (i != j) {
-                dist = l_animal[i].DistLoc(l_animal[j]);
+                dist = listAnimal[i].DistLoc(listAnimal[j]);
               }
               j++;
             }
-            if (!(m_cell[x][y].isCaged()) || !dist) {
+            if (!(matCell[x][y].isCaged()) || !dist) {
               x--;
-              l_animal[i].setLoc(x, y);
+              listAnimal[i].setLoc(x, y);
               moved = false;
             }
             break;
           case 4:
             y--;
-            l_animal[i].setLoc(x, y);
+            listAnimal[i].setLoc(x, y);
             moved = true;
             j = 0;
-            while (j < Animal.GetNAnimal() && dist) {
+            while (j < Animal.getNAnimal() && dist) {
               if (i != j) {
-                dist = l_animal[i].DistLoc(l_animal[j]);
+                dist = listAnimal[i].DistLoc(listAnimal[j]);
               }
               j++;
             }
-            if (!(m_cell[x][y].isCaged()) || !dist) {
+            if (!(matCell[x][y].isCaged()) || !dist) {
               y++;
-              l_animal[i].setLoc(x, y);
+              listAnimal[i].setLoc(x, y);
               moved = false;
             }
             break;
@@ -182,7 +197,7 @@ public class Zoo {
   }
 
   /**
-   * Setter untuk inisialisasi Cell di Cage
+   * Setter untuk inisialisasi Cell di Cage.
    *
    * @param n  array ke n pada Cage
    * @param nn array ke nn pada Cell di Cage
@@ -190,28 +205,28 @@ public class Zoo {
    * @param j  ordinat pada Zoo
    */
   public void setCellCage(int n, int nn, int i, int j) {
-    if (m_cell[i][j].render() == '*') {
-      l_cage[n].getCell()[nn] = new Cell("AirHabitat", i, j);
-    } else if (m_cell[i][j].render() == '#') {
-      l_cage[n].getCell()[nn] = new Cell("LandHabitat", i, j);
-    } else if (m_cell[i][j].render() == '~') {
-      l_cage[n].getCell()[nn] = new Cell("WaterHabitat", i, j);
+    if (matCell[i][j].getContent() == '*') {
+      listCage[n].getCell()[nn] = new Cell("AirHabitat", i, j);
+    } else if (matCell[i][j].getContent() == '#') {
+      listCage[n].getCell()[nn] = new Cell("LandHabitat", i, j);
+    } else if (matCell[i][j].getContent() == '~') {
+      listCage[n].getCell()[nn] = new Cell("WaterHabitat", i, j);
     }
-    l_cage[n].getCell()[nn].setCaged();
-    l_cage[n].incSize();
+    listCage[n].getCell()[nn].setCaged();
+    listCage[n].incSize();
   }
 
   /**
-   * Create Cage pada Zoo
+   * Create Cage pada Zoo.
    *
    * @param n array ke n pada Cage
    */
   public void createCage(int n) {
-    l_cage[n] = new Cage();
+    listCage[n] = new Cage();
   }
 
   /**
-   * Create Cell pada Zoo
+   * Create Cell pada Zoo.
    *
    * @param c content yang ada pada Cell di Zoo
    * @param i absis pada Cell di Zoo
@@ -220,34 +235,34 @@ public class Zoo {
   public void createCell(char c, int i, int j) {
     switch (c) {
       case '*':
-        m_cell[i][j] = new Cell("AirHabitat", i, j);
+        matCell[i][j] = new Cell("AirHabitat", i, j);
         break;
       case '#':
-        m_cell[i][j] = new Cell("LandHabitat", i, j);
+        matCell[i][j] = new Cell("LandHabitat", i, j);
         break;
       case '~':
-        m_cell[i][j] = new Cell("WaterHabitat", i, j);
+        matCell[i][j] = new Cell("WaterHabitat", i, j);
         break;
       case '+':
-        m_cell[i][j] = new Cell("Road", i, j);
+        matCell[i][j] = new Cell("Road", i, j);
         break;
       case '=':
-        m_cell[i][j] = new Cell("RoadEntrance", i, j);
+        matCell[i][j] = new Cell("RoadEntrance", i, j);
         break;
       case '!':
-        m_cell[i][j] = new Cell("RoadExit", i, j);
+        matCell[i][j] = new Cell("RoadExit", i, j);
         break;
       case '.':
-        m_cell[i][j] = new Cell("Park", i, j);
+        matCell[i][j] = new Cell("Park", i, j);
         break;
       case '$':
-        m_cell[i][j] = new Cell("Restaurant", i, j);
+        matCell[i][j] = new Cell("Restaurant", i, j);
         break;
     }
   }
 
   /**
-   * Create Animal pada Zoo
+   * Create Animal pada Zoo.
    *
    * @param c content yang ada pada Animal di Zoo
    * @param i absis pada Animal di Zoo
@@ -255,14 +270,14 @@ public class Zoo {
    * @param n jumlah total hewan yang ada pada Zoo
    */
   public void createAnimal(char c, int i, int j, int n) {
-    if (m_cell[i][j].render() == '#') {
-      if (m_cell[i][j].isCaged()) {
+    if (matCell[i][j].getContent() == '#') {
+      if (matCell[i][j].isCaged()) {
         int k = 0;
         boolean found = false;
         while (k < getNumCage() && !found) {
           int l = 0;
-          while (l < l_cage[k].getSize() && !found) {
-            if (l_cage[k].getCell()[l].getX() == i && l_cage[k].getCell()[l].getY() == j) {
+          while (l < listCage[k].getSize() && !found) {
+            if (listCage[k].getCell()[l].getX() == i && listCage[k].getCell()[l].getY() == j) {
               found = true;
             } else {
               l++;
@@ -271,13 +286,12 @@ public class Zoo {
           k++;
         }
         k--;
-        int area = l_cage[k].getSize();
+        int area = listCage[k].getSize();
         int max_n_animal = area * 3 / 10;
         int n_animal = 0;
-        for (int ii = 0; ii < Animal.GetNAnimal(); ii++) {
-          for (int jj = 0; jj < l_cage[k].getSize(); jj++) {
-            if (l_cage[k].getCell()[jj].getX() == l_animal[ii].GetLocX() &&
-              l_cage[k].getCell()[jj].getY() == l_animal[ii].GetLocY()) {
+        for (int ii = 0; ii < Animal.getNAnimal(); ii++) {
+          for (int jj = 0; jj < listCage[k].getSize(); jj++) {
+            if (listCage[k].getCell()[jj].getX() == listAnimal[ii].getLocX() && listCage[k].getCell()[jj].getY() == listAnimal[ii].getLocY()) {
               n_animal++;
             }
           }
@@ -285,76 +299,76 @@ public class Zoo {
         if (n_animal < max_n_animal) {
           switch (c) {
             case 'A':
-              l_animal[n] = new Animal("Bekantan", i, j);
+              listAnimal[n] = new Animal("Bekantan", i, j);
               break;
             case 'B':
-              l_animal[n] = new Animal("BurungHantu", i, j);
+              listAnimal[n] = new Animal("BurungHantu", i, j);
               break;
             case 'C':
-              l_animal[n] = new Animal("Codot", i, j);
+              listAnimal[n] = new Animal("Codot", i, j);
               break;
             case 'D':
-              l_animal[n] = new Animal("Elang", i, j);
+              listAnimal[n] = new Animal("Elang", i, j);
               break;
             case 'E':
-              l_animal[n] = new Animal("Gajah", i, j);
+              listAnimal[n] = new Animal("Gajah", i, j);
               break;
             case 'F':
-              l_animal[n] = new Animal("Gorilla", i, j);
+              listAnimal[n] = new Animal("Gorilla", i, j);
               break;
             case 'G':
-              l_animal[n] = new Animal("Harimau", i, j);
+              listAnimal[n] = new Animal("Harimau", i, j);
               break;
             case 'H':
-              l_animal[n] = new Animal("Hiu", i, j);
+              listAnimal[n] = new Animal("Hiu", i, j);
               break;
             case 'I':
-              l_animal[n] = new Animal("IkanTerbang", i, j);
+              listAnimal[n] = new Animal("IkanTerbang", i, j);
               break;
             case 'J':
-              l_animal[n] = new Animal("Jerapah", i, j);
+              listAnimal[n] = new Animal("Jerapah", i, j);
               break;
             case 'K':
-              l_animal[n] = new Animal("Kancil", i, j);
+              listAnimal[n] = new Animal("Kancil", i, j);
               break;
             case 'L':
-              l_animal[n] = new Animal("Kepik", i, j);
+              listAnimal[n] = new Animal("Kepik", i, j);
               break;
             case 'M':
-              l_animal[n] = new Animal("Kepiting", i, j);
+              listAnimal[n] = new Animal("Kepiting", i, j);
               break;
             case 'N':
-              l_animal[n] = new Animal("KumbangHutan", i, j);
+              listAnimal[n] = new Animal("KumbangHutan", i, j);
               break;
             case 'O':
-              l_animal[n] = new Animal("KupuKupu", i, j);
+              listAnimal[n] = new Animal("KupuKupu", i, j);
               break;
             case 'P':
-              l_animal[n] = new Animal("Lobster", i, j);
+              listAnimal[n] = new Animal("Lobster", i, j);
               break;
             case 'Q':
-              l_animal[n] = new Animal("LumbaLumba", i, j);
+              listAnimal[n] = new Animal("LumbaLumba", i, j);
               break;
             case 'R':
-              l_animal[n] = new Animal("MacanTutul", i, j);
+              listAnimal[n] = new Animal("MacanTutul", i, j);
               break;
             case 'S':
-              l_animal[n] = new Animal("OwaOwa", i, j);
+              listAnimal[n] = new Animal("OwaOwa", i, j);
               break;
             case 'T':
-              l_animal[n] = new Animal("PausSperma", i, j);
+              listAnimal[n] = new Animal("PausSperma", i, j);
               break;
             case 'U':
-              l_animal[n] = new Animal("Piranha", i, j);
+              listAnimal[n] = new Animal("Piranha", i, j);
               break;
             case 'V':
-              l_animal[n] = new Animal("Platypus", i, j);
+              listAnimal[n] = new Animal("Platypus", i, j);
               break;
             case 'W':
-              l_animal[n] = new Animal("Singa", i, j);
+              listAnimal[n] = new Animal("Singa", i, j);
               break;
             case 'X':
-              l_animal[n] = new Animal("SingaLaut", i, j);
+              listAnimal[n] = new Animal("SingaLaut", i, j);
               break;
           }
         }
@@ -363,15 +377,128 @@ public class Zoo {
   }
 
   /**
-   * Print Zoo pada layar
+   * Print Zoo pada layar.
    */
-  public void PrintZoo() {
-    for (int i = 0; i < size_brs; i++) {
-      for (int j = 0; j < size_kol; j++) {
-        System.out.print(m_cell[i][j].render());
+  public void printZoo() {
+    for (int i = 0; i < sizeBrs; i++) {
+      for (int j = 0; j < sizeKol; j++) {
+        System.out.print(matCell[i][j].getContent());
       }
       System.out.println("");
     }
   }
 
+  /**
+   * Mencetak peta Zoo berikut kandang-kandangnya.
+   */
+  public void printZooCage() {
+    for (int i = 0; i < sizeBrs; i++) {
+      for (int j = 0; j < sizeKol; j++) {
+        char c = matCell[i][j].getContent();
+        if (c == '*' || c == '#' || c == '~') {
+          if (matCell[i][j].isCaged()) {
+            System.out.print(ANSI_RED + c + ANSI_RESET);
+          } else {
+            System.out.print(c);
+          }
+        } else {
+          System.out.print(c);
+        }
+      }
+      System.out.println("");
+    }
+  }
+
+  /**
+   * Mencetak Zoo lengkap dengan lokasi tiap hewan dan kandangnya.
+   *
+   * @param x1 Absis titik awal peta yang akan dicetak
+   * @param y1 Ordinat titik awal peta yang akan dicetak
+   * @param x2 Absis titik akhir peta yang akan dicetak
+   * @param y2 Ordinat titik akhir peta yang akan dicetak
+   */
+  public void printZooCageAnimal(int x1, int y1, int x2, int y2) {
+
+    for (int i = 0; i < sizeBrs; i++) {
+      for (int j = 0; j < sizeKol; j++) {
+
+        char c = matCell[i][j].getContent();
+        if (c == '*' || c == '#' || c == '~') {
+          if (matCell[i][j].isCaged()) {
+            boolean ada_hewan = false;
+            int hewan_n = 0;
+            for (int k = 0; k < Animal.getNAnimal(); k++) {
+              if (listAnimal[k].getLocX() == i && listAnimal[k].getLocY() == j) {
+                ada_hewan = true;
+                hewan_n = k;
+              }
+            }
+            if (i >= x1 && i <= x2 && j >= y1 && j <= y2) if (ada_hewan)
+              System.out.print(ANSI_PURPLE + listAnimal[hewan_n].getContent() + ANSI_RESET);
+            else System.out.print(ANSI_RED + c + ANSI_RESET);
+          } else {
+            if (i >= x1 && i <= x2 && j >= y1 && j <= y2) System.out.print(c);
+          }
+        } else {
+          if (i >= x1 && i <= x2 && j >= y1 && j <= y2) if (c == '+') {
+            System.out.print(ANSI_WHITE + c + ANSI_RESET);
+          } else if (c == '.') {
+            System.out.print(ANSI_GREEN + c + ANSI_RESET);
+          } else if (c == '$') {
+            System.out.print(ANSI_YELLOW + c + ANSI_RESET);
+          } else {
+            System.out.print(c);
+          }
+        }
+      }
+      System.out.println("");
+    }
+  }
+
+  /**
+   * Mencetak tiap elemen peta Zoo secara berwarna.
+   *
+   * @param x Absis elemen yang akan dicetak
+   * @param y Ordinat elemen yang akan dicetak
+   */
+  public void printZooAnimalCageTour(int x, int y) {
+
+    for (int i = 0; i < sizeBrs; i++) {
+      for (int j = 0; j < sizeKol; j++) {
+        if (i == x && j == y) {
+          System.out.print(ANSI_BLUE + 'P' + ANSI_RESET);
+        } else {
+          char c = matCell[i][j].getContent();
+          if (c == '*' || c == '#' || c == '~') {
+            if (matCell[i][j].isCaged()) {
+              boolean ada_hewan = false;
+              int hewan_n = 0;
+              for (int k = 0; k < Animal.getNAnimal(); k++) {
+                if (listAnimal[k].getLocX() == i && listAnimal[k].getLocY() == j) {
+                  ada_hewan = true;
+                  hewan_n = k;
+                }
+              }
+              if (ada_hewan)
+                System.out.print(ANSI_PURPLE + listAnimal[hewan_n].getContent() + ANSI_RESET);
+              else System.out.print(ANSI_RED + c + ANSI_RESET);
+            } else {
+              System.out.print(c);
+            }
+          } else {
+            if (c == '+') {
+              System.out.print(ANSI_WHITE + c + ANSI_RESET);
+            } else if (c == '.') {
+              System.out.print(ANSI_GREEN + c + ANSI_RESET);
+            } else if (c == '$') {
+              System.out.print(ANSI_YELLOW + c + ANSI_RESET);
+            } else {
+              System.out.print(c);
+            }
+          }
+        }
+      }
+      System.out.println("");
+    }
+  }
 }

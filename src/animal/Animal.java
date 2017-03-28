@@ -37,6 +37,7 @@ public class Animal {
         legs = 2;
         content = 'A';
         suara = "Uuuuuuuu";
+        break;
       }
       case "BurungHantu" :
       {
@@ -49,6 +50,7 @@ public class Animal {
         legs = 2;
         content = 'B';
         suara = "Kur kur kur";
+        break;
       }
       case "Codot" :
       {
@@ -61,6 +63,7 @@ public class Animal {
         legs = 2;
         content = 'C';
         suara = "Cit cit cit";
+        break;
       }
       case "Elang" :
       {
@@ -73,6 +76,7 @@ public class Animal {
         legs = 2;
         content = 'D';
         suara = "Koak koakk koakk";
+        break;
       }
       case "Gajah" :
       {
@@ -85,6 +89,7 @@ public class Animal {
         legs = 4;
         content = 'E';
         suara = "Ngoett";
+        break;
       }
       case "Gorilla" :
       {
@@ -97,6 +102,7 @@ public class Animal {
         legs = 2;
         content = 'C';
         suara = "Huhahuha";
+        break;
       }
       case "Harimau" :
       {
@@ -109,6 +115,7 @@ public class Animal {
         legs = 4;
         content = 'G';
         suara = "Roarrrr";
+        break;
       }
       case "Hiu" :
       {
@@ -121,6 +128,7 @@ public class Animal {
         legs = 0;
         content = 'H';
         suara = "Shush shush";
+        break;
       }
       case "IkanTerbang" :
       {
@@ -133,6 +141,7 @@ public class Animal {
         legs = 0;
         content = 'I';
         suara = "Cepok cepok cepok";
+        break;
       }
       case "Jerapah" :
       {
@@ -145,6 +154,7 @@ public class Animal {
         legs = 4;
         content = 'J';
         suara = "Ngoet ngoet";
+        break;
       }
       case "Kancil" :
       {
@@ -157,6 +167,7 @@ public class Animal {
         legs = 4;
         content = 'K';
         suara = "Ngik ngik ngik";
+        break;
       }
       case "Kepik" :
       {
@@ -169,6 +180,7 @@ public class Animal {
         legs = 6;
         content = 'L';
         suara = "Krik krik krik";
+        break;
       }
       case "Kepiting" :
       {
@@ -181,6 +193,7 @@ public class Animal {
         legs = 10;
         content = 'M';
         suara = "Kuikk kuikk";
+        break;
       }
       case "KumbangHutan" :
       {
@@ -193,6 +206,7 @@ public class Animal {
         legs = 6;
         content = 'N';
         suara = "Kruk kruk kruk";
+        break;
       }
       case "KupuKupu" :
       {
@@ -205,6 +219,7 @@ public class Animal {
         legs = 6;
         content = 'O';
         suara = "Wir wir";
+        break;
       }
       case "Lobster" :
       {
@@ -217,6 +232,7 @@ public class Animal {
         legs = 10;
         content = 'P';
         suara = "Crek crek crek";
+        break;
       }
       case "LumbaLumba" :
       {
@@ -229,6 +245,7 @@ public class Animal {
         legs = 0;
         content = 'Q';
         suara = "Cet cet cet";
+        break;
       }
       case "MacanTutul" :
       {
@@ -241,6 +258,7 @@ public class Animal {
         legs = 4;
         content = 'R';
         suara = "Aummmm";
+        break;
       }
       case "OwaOwa" :
       {
@@ -253,6 +271,7 @@ public class Animal {
         legs = 2;
         content = 'S';
         suara = "Huhuhuhu";
+        break;
       }
       case "PausSperma" :
       {
@@ -265,6 +284,7 @@ public class Animal {
         legs = 0;
         content = 'T';
         suara = "Srosh srosh";
+        break;
       }
       case "Piranha" :
       {
@@ -277,6 +297,7 @@ public class Animal {
         legs = 0;
         content = 'U';
         suara = "Kraus kraus";
+        break;
       }
       case "Platypus" :
       {
@@ -289,6 +310,7 @@ public class Animal {
         legs = 4;
         content = 'Z';
         suara = "Krr krr";
+        break;
       }
       case "Singa" :
       {
@@ -301,6 +323,7 @@ public class Animal {
         legs = 4;
         content = 'W';
         suara = "Groarrr";
+        break;
       }
       case "SingaLaut" :
       {
@@ -313,6 +336,7 @@ public class Animal {
         legs = 0;
         content = 'Y';
         suara = "Ou ou ou";
+        break;
       }
     }
     fodder = (float)0.025*weight;
@@ -320,6 +344,7 @@ public class Animal {
     loc_y = y;
     n_animal++;
     consumerate += fodder;
+    n_animal++;
   }
   /** Menetapkan lokasi dari sebuah objek animal
    * @param x Letak hewan berdasarkan indeks baris map zoo
@@ -332,42 +357,42 @@ public class Animal {
   /** Menghasilkan nama hewan
    * @return string suara hewan.
    */
-  public String GetName() {
+  public String getName() {
     return  name;
   }
   /**
    * Mengembalikan letak baris objek pada map zoo
    * @return Indeks baris map zoo dimana objek berada
    */
-  public int GetLocX() {
+  public int getLocX() {
     return loc_x;
   }
   /**
    * Mengembalikan letak kolom objek pada map zoo
    * @return Indeks kolom map zoo dimana objek berada
    */
-  public int GetLocY() {
+  public int getLocY() {
     return loc_y;
   }
   /**
    * Mengembalikan jumlah makanan yang dikonsumsi hewan per hari
    * @return Berat makanan yang dikonsumsi hewan dalam satu hari
    */
-  public double GetFodder() {
+  public double getFodder() {
     return 0.025 * weight;
   }
   /**
-   * Getter nilai atribut content
+   * getter nilai atribut content
    * @return content
    */
-  public char GetContent() {
+  public char getContent() {
     return content;
   }
   /**
    * Mengembalikan berat badan hewan
    * @return Berat badan hewan
    */
-  public float GetWeight() {
+  public float getWeight() {
     return weight;
   }
   /**
@@ -381,7 +406,7 @@ public class Animal {
    * Mengembalikan jumlah kaki objek Animal
    * @return Jumlah kaki hewan
    */
-  public int GetLegs() {
+  public int getLegs() {
     return legs;
   }
   /**
@@ -417,7 +442,7 @@ public class Animal {
   /**
    * Mencetak semua atribut kelas beserta nilainya.
    */
-  public void GetInfo() {
+  public void getInfo() {
     System.out.println("Content        : "+content);
     System.out.println("Name           : "+name);
     System.out.println("Location       : ("+loc_x+","+loc_y+")");
@@ -425,7 +450,7 @@ public class Animal {
     System.out.println("Habitat        : "+habitat);
     System.out.println("Type           : "+type);
     System.out.println("Diet           : "+diet);
-    System.out.println("Fodder         : "+String.format("%.5f",GetFodder())+" kg");
+    System.out.println("Fodder         : "+String.format("%.5f",getFodder())+" kg");
     System.out.println(tamed ? "Tame           : Yes " : "Tame           : No ");
     System.out.println("Number of Legs : "+legs);
   }
@@ -441,14 +466,14 @@ public class Animal {
    * Mengembalikan berat total makanan yang dikonsumsi semua hewan per hari
    * @return Berat makanan yang dikonsumsi semua jenis hewan pada map zoo per hari
    */
-  static public float GetConsumeRate() {
+  static public float getConsumeRate() {
     return consumerate;
   }
   /**
-   * Getter nilai data n_animal
+   * getter nilai data n_animal
    * @return n_animal
    */
-  static public int GetNAnimal() {
+  static public int getNAnimal() {
     return  n_animal;
   }
   /**
