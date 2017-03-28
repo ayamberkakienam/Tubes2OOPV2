@@ -4,30 +4,34 @@
 
 package animal;
 
-/** Animal
+/**
+ * Animal.
  * Kelas untuk membuat hewan
  */
 public class Animal {
   static {
     /**
-     * Akumulasi jumlah makanan yang dikonsumsi tiap jenis hewan per hari
+     * Akumulasi jumlah makanan yang dikonsumsi tiap jenis hewan per hari.
      */
     consumerate = 0;
     /**
-     * Jumlah hewan yang telah di construct
+     * Jumlah hewan yang telah di construct.
      */
-    n_animal = 0;
+    nAnimal = 0;
   }
-  /** Constructor.
-   * Melakukan inisialisasi kelas dengan parameter berat,koordinat lokasi x,koordinat lokasi y,dan kejinakan
+
+  /**
+   * Constructor.
+   * Melakukan inisialisasi kelas dengan parameter berat,koordinat lokasi x,koordinat lokasi y,
+   * dan kejinakan
+   *
    * @param hewan nama spesies hewan
-   * @param x Letak hewan berdasarkan indeks baris map zoo
-   * @param y Letak hewan berdasarkan indeks kolom map zoo
+   * @param x     Letak hewan berdasarkan indeks baris map zoo
+   * @param y     Letak hewan berdasarkan indeks kolom map zoo
    */
   public Animal(String hewan, int x, int y) {
     switch (hewan) {
-      case "Bekantan" :
-      {
+      case "Bekantan": {
         name = "Bekantan";
         habitat = "Land";
         weight = 50;
@@ -39,8 +43,7 @@ public class Animal {
         suara = "Uuuuuuuu";
         break;
       }
-      case "BurungHantu" :
-      {
+      case "BurungHantu": {
         name = "Burung Hantu";
         habitat = "Air";
         weight = 2;
@@ -52,11 +55,10 @@ public class Animal {
         suara = "Kur kur kur";
         break;
       }
-      case "Codot" :
-      {
+      case "Codot": {
         name = "Codot";
         habitat = "Air";
-        weight = (float)0.5;
+        weight = (float) 0.5;
         type = "Herbivore";
         tamed = false;
         diet = "Fruit";
@@ -65,8 +67,7 @@ public class Animal {
         suara = "Cit cit cit";
         break;
       }
-      case "Elang" :
-      {
+      case "Elang": {
         name = "Elang";
         habitat = "Air";
         weight = 3;
@@ -78,8 +79,7 @@ public class Animal {
         suara = "Koak koakk koakk";
         break;
       }
-      case "Gajah" :
-      {
+      case "Gajah": {
         name = "Gajah";
         habitat = "Land";
         weight = 3500;
@@ -91,8 +91,7 @@ public class Animal {
         suara = "Ngoett";
         break;
       }
-      case "Gorilla" :
-      {
+      case "Gorilla": {
         name = "Gorilla";
         habitat = "Land";
         weight = 200;
@@ -104,8 +103,7 @@ public class Animal {
         suara = "Huhahuha";
         break;
       }
-      case "Harimau" :
-      {
+      case "Harimau": {
         name = "Harimau";
         habitat = "Land";
         weight = 450;
@@ -117,8 +115,7 @@ public class Animal {
         suara = "Roarrrr";
         break;
       }
-      case "Hiu" :
-      {
+      case "Hiu": {
         name = "Hiu";
         habitat = "Water";
         weight = 100;
@@ -130,8 +127,7 @@ public class Animal {
         suara = "Shush shush";
         break;
       }
-      case "IkanTerbang" :
-      {
+      case "IkanTerbang": {
         name = "Ikan Terbang";
         habitat = "Water";
         weight = 2;
@@ -143,8 +139,7 @@ public class Animal {
         suara = "Cepok cepok cepok";
         break;
       }
-      case "Jerapah" :
-      {
+      case "Jerapah": {
         name = "Jerapah";
         habitat = "Land";
         weight = 500;
@@ -156,8 +151,7 @@ public class Animal {
         suara = "Ngoet ngoet";
         break;
       }
-      case "Kancil" :
-      {
+      case "Kancil": {
         name = "Kancil";
         habitat = "Land";
         weight = 60;
@@ -169,11 +163,10 @@ public class Animal {
         suara = "Ngik ngik ngik";
         break;
       }
-      case "Kepik" :
-      {
+      case "Kepik": {
         name = "Kepik";
         habitat = "Air";
-        weight = (float)0.01;
+        weight = (float) 0.01;
         type = "Herbivore";
         tamed = true;
         diet = "Nectar";
@@ -182,8 +175,7 @@ public class Animal {
         suara = "Krik krik krik";
         break;
       }
-      case "Kepiting" :
-      {
+      case "Kepiting": {
         name = "Kepiting";
         habitat = "Water";
         weight = 1;
@@ -195,11 +187,10 @@ public class Animal {
         suara = "Kuikk kuikk";
         break;
       }
-      case "KumbangHutan" :
-      {
+      case "KumbangHutan": {
         name = "Kumbang Hutan";
         habitat = "Air";
-        weight = (float)0.05;
+        weight = (float) 0.05;
         type = "Herbivore";
         tamed = true;
         diet = "Nectar";
@@ -208,11 +199,10 @@ public class Animal {
         suara = "Kruk kruk kruk";
         break;
       }
-      case "KupuKupu" :
-      {
+      case "KupuKupu": {
         name = "KupuKupu";
         habitat = "Air";
-        weight = (float)0.03;
+        weight = (float) 0.03;
         type = "Herbivore";
         tamed = true;
         diet = "Nectar";
@@ -221,11 +211,10 @@ public class Animal {
         suara = "Wir wir";
         break;
       }
-      case "Lobster" :
-      {
+      case "Lobster": {
         name = "Lobster";
         habitat = "Water";
-        weight = (float)0.5;
+        weight = (float) 0.5;
         type = "Omnivore";
         tamed = true;
         diet = "Plankton";
@@ -234,8 +223,7 @@ public class Animal {
         suara = "Crek crek crek";
         break;
       }
-      case "LumbaLumba" :
-      {
+      case "LumbaLumba": {
         name = "Lumba lumba";
         habitat = "Water";
         weight = 100;
@@ -247,8 +235,7 @@ public class Animal {
         suara = "Cet cet cet";
         break;
       }
-      case "MacanTutul" :
-      {
+      case "MacanTutul": {
         name = "Macan Tutul";
         habitat = "Land";
         weight = 350;
@@ -260,8 +247,7 @@ public class Animal {
         suara = "Aummmm";
         break;
       }
-      case "OwaOwa" :
-      {
+      case "OwaOwa": {
         name = "OwaOwa";
         habitat = "Land";
         weight = 70;
@@ -273,8 +259,7 @@ public class Animal {
         suara = "Huhuhuhu";
         break;
       }
-      case "PausSperma" :
-      {
+      case "PausSperma": {
         name = "Paus Sperma";
         habitat = "Water";
         weight = 7000;
@@ -286,11 +271,10 @@ public class Animal {
         suara = "Srosh srosh";
         break;
       }
-      case "Piranha" :
-      {
+      case "Piranha": {
         name = "Piranha";
         habitat = "Water";
-        weight = (float)0.7;
+        weight = (float) 0.7;
         type = "Carnivore";
         tamed = false;
         diet = "Meat";
@@ -299,8 +283,7 @@ public class Animal {
         suara = "Kraus kraus";
         break;
       }
-      case "Platypus" :
-      {
+      case "Platypus": {
         name = "Platypus";
         habitat = "Land and Water";
         weight = 5;
@@ -312,8 +295,7 @@ public class Animal {
         suara = "Krr krr";
         break;
       }
-      case "Singa" :
-      {
+      case "Singa": {
         name = "Singa";
         habitat = "Land";
         weight = 400;
@@ -325,8 +307,7 @@ public class Animal {
         suara = "Groarrr";
         break;
       }
-      case "SingaLaut" :
-      {
+      case "SingaLaut": {
         name = "Singa Laut";
         habitat = "Water";
         weight = 70;
@@ -338,198 +319,237 @@ public class Animal {
         suara = "Ou ou ou";
         break;
       }
+      default: {
+        name = "NULL";
+        habitat = "NULL";
+        weight = 0;
+        type = "NULL";
+        tamed = false;
+        diet = "NULL";
+        legs = 0;
+        content = '-';
+        suara = "NULL";
+        break;
+      }
     }
-    fodder = (float)0.025*weight;
-    loc_x = x;
-    loc_y = y;
-    n_animal++;
+    fodder = (float) 0.025 * weight;
+    locX = x;
+    locY = y;
+    nAnimal++;
     consumerate += fodder;
   }
-  /** Menetapkan lokasi dari sebuah objek animal
+
+  /**
+   * Menetapkan lokasi dari sebuah objek animal.
+   *
    * @param x Letak hewan berdasarkan indeks baris map zoo
    * @param y Letak hewan berdasarkan indeks kolom map zoo
    */
   public void setLoc(int x, int y) {
-    loc_x = x;
-    loc_y = y;
+    locX = x;
+    locY = y;
   }
-  /** Menghasilkan nama hewan
+
+  /**
+   * Menghasilkan nama hewan.
+   *
    * @return string suara hewan.
    */
   public String getName() {
-    return  name;
+    return name;
   }
+
   /**
-   * Mengembalikan letak baris objek pada map zoo
+   * Mengembalikan letak baris objek pada map zoo.
+   *
    * @return Indeks baris map zoo dimana objek berada
    */
   public int getLocX() {
-    return loc_x;
+    return locX;
   }
+
   /**
-   * Mengembalikan letak kolom objek pada map zoo
+   * Mengembalikan letak kolom objek pada map zoo.
+   *
    * @return Indeks kolom map zoo dimana objek berada
    */
   public int getLocY() {
-    return loc_y;
+    return locY;
   }
+
   /**
-   * Mengembalikan jumlah makanan yang dikonsumsi hewan per hari
+   * Mengembalikan jumlah makanan yang dikonsumsi hewan per hari.
+   *
    * @return Berat makanan yang dikonsumsi hewan dalam satu hari
    */
   public double getFodder() {
     return 0.025 * weight;
   }
+
   /**
-   * getter nilai atribut content
+   * Getter nilai atribut content.
+   *
    * @return content
    */
   public char getContent() {
     return content;
   }
+
   /**
-   * Mengembalikan berat badan hewan
+   * Mengembalikan berat badan hewan.
+   *
    * @return Berat badan hewan
    */
   public float getWeight() {
     return weight;
   }
+
   /**
-   * Mengembalikan true jika hewan telah dijinakkan
+   * Mengembalikan true jika hewan telah dijinakkan.
+   *
    * @return True apabila hewan telah dijinakkan
    */
-  public boolean IsTamed() {
+  public boolean isTamed() {
     return tamed;
   }
+
   /**
-   * Mengembalikan jumlah kaki objek Animal
+   * Mengembalikan jumlah kaki objek Animal.
+   *
    * @return Jumlah kaki hewan
    */
   public int getLegs() {
     return legs;
   }
+
   /**
-   * Mengembalikan true apabila hewan tidak berada pada cell dengan baris
-   * yang sama dengan an
-   * @param  an Hewan yang menjadi acuan
-   * @return    True apabila objek tidak berada pada cell dengan indeks baris
-   * yang sama dengan objek an
+   * Mengembalikan true apabila hewan tidak berada pada cell dengan baris yang sama dengan an.
+   *
+   * @param an Hewan yang menjadi acuan
+   * @return True apabila objek tidak berada pada cell dengan indeks baris yang sama dengan objek an
    */
-  public boolean DistLocX(Animal an) {
-    return (loc_x != an.loc_x);
+  public boolean distLocX(Animal an) {
+    return (locX != an.locX);
   }
+
   /**
-   * Mengembalikan true apabila hewan tidak berada pada cell dengan kolom
-   * yang sama dengan an
-   * @param  an Hewan yang menjadi acuan
-   * @return    True apabila objek tidak berada pada cell dengan indeks kolom
-   * yang sama dengan objek an
+   * Mengembalikan true apabila hewan tidak berada pada cell dengan kolom yang sama dengan an.
+   *
+   * @param an Hewan yang menjadi acuan
+   * @return True apabila objek tidak berada pada cell dengan indeks kolom yang sama dengan objek an
    */
-  public boolean DistLocY(Animal an) {
-    return (loc_y != an.loc_y);
+  public boolean distLocY(Animal an) {
+    return (locY != an.locY);
   }
+
   /**
-   * Mengembalikan true apabila hewan tidak berada pada cell yang sama
-   * dengan an
-   * @param  an Hewan yang menjadi acuan
-   * @return    True apabila objek tidak berada pada cell yang sama dengan
-   * objek an
+   * Mengembalikan true apabila hewan tidak berada pada cell yang sama dengan an.
+   *
+   * @param an Hewan yang menjadi acuan
+   * @return True apabila objek tidak berada pada cell yang sama dengan objek an
    */
-  public boolean DistLoc(Animal an) {
-    return (DistLocX(an) || DistLocY(an));
+  public boolean distLoc(Animal an) {
+    return (distLocX(an) || distLocY(an));
   }
+
   /**
    * Mencetak semua atribut kelas beserta nilainya.
    */
   public void getInfo() {
-    System.out.println("Content        : "+content);
-    System.out.println("Name           : "+name);
-    System.out.println("Location       : ("+loc_x+","+loc_y+")");
-    System.out.println("Weight         : "+String.format("%.5f",weight)+" kg/day");
-    System.out.println("Habitat        : "+habitat);
-    System.out.println("Type           : "+type);
-    System.out.println("Diet           : "+diet);
-    System.out.println("Fodder         : "+String.format("%.5f",getFodder())+" kg");
+    System.out.println("Content        : " + content);
+    System.out.println("Name           : " + name);
+    System.out.println("Location       : (" + locX + "," + locY + ")");
+    System.out.println("Weight         : " + String.format("%.5f", weight) + " kg/day");
+    System.out.println("Habitat        : " + habitat);
+    System.out.println("Type           : " + type);
+    System.out.println("Diet           : " + diet);
+    System.out.println("Fodder         : " + String.format("%.5f", getFodder()) + " kg");
     System.out.println(tamed ? "Tame           : Yes " : "Tame           : No ");
-    System.out.println("Number of Legs : "+legs);
+    System.out.println("Number of Legs : " + legs);
   }
+
   /**
-   * Mengembalikan string yang menggambarkan
+   * Mengembalikan string yang menggambarkan.
    * interaksi user dengan hewan
+   *
    * @return suara
    */
-  public String Interact(){
+  public String interact() {
     return suara;
   }
+
   /**
-   * Mengembalikan berat total makanan yang dikonsumsi semua hewan per hari
+   * Mengembalikan berat total makanan yang dikonsumsi semua hewan per hari.
+   *
    * @return Berat makanan yang dikonsumsi semua jenis hewan pada map zoo per hari
    */
-  static public float getConsumeRate() {
+  public static float getConsumeRate() {
     return consumerate;
   }
+
   /**
-   * getter nilai data n_animal
-   * @return n_animal
+   * Getter nilai data nAnimal.
+   *
+   * @return nAnimal
    */
-  static public int getNAnimal() {
-    return  n_animal;
+  public static int getNAnimal() {
+    return nAnimal;
   }
+
   /**
-   * Nama jenis hewan
+   * Nama jenis hewan.
    */
   protected String name;
   /**
-   * Habitat hidup hewan
+   * Habitat hidup hewan.
    */
   protected String habitat;
   /**
-   * Berat tubuh hewan
+   * Berat tubuh hewan.
    */
   protected float weight;
   /**
-   * Jumlah makan yang dikonsumsi hewan per hari
+   * Jumlah makan yang dikonsumsi hewan per hari.
    */
   protected float fodder;
   /**
-   * Tipe diet hewan
+   * Tipe diet hewan.
    */
   protected String type;
   /**
-   * True apabila hewan telah dijinakkan
+   * True apabila hewan telah dijinakkan.
    */
   protected boolean tamed;
   /**
-   * Jenis makanan hewan
+   * Jenis makanan hewan.
    */
   protected String diet;
   /**
-   * Indeks baris pada map zoo tempat hewan berada
+   * Indeks baris pada map zoo tempat hewan berada.
    */
-  protected int loc_x;
+  protected int locX;
   /**
-   * Indeks kolom pada map zoo tempat hewan berada
+   * Indeks kolom pada map zoo tempat hewan berada.
    */
-  protected int loc_y;
+  protected int locY;
   /**
-   * Jumlah kaki hewan
+   * Jumlah kaki hewan.
    */
   protected int legs;
   /**
-   * Karakter yang melambangkan hewan apabila map zoo dicetak
+   * Karakter yang melambangkan hewan apabila map zoo dicetak.
    */
   protected char content;
   /**
-   * Suara hewan
+   * Suara hewan.
    */
   protected String suara;
   /**
-   * Suara hewan yang telah di construct
+   * Suara hewan yang telah di construct.
    */
-
-  static public int n_animal;
+  public static int nAnimal;
   /**
-   * Akumulasi jumlah makanan yang dikonsumsi tiap jenis hewan per hari
+   * Akumulasi jumlah makanan yang dikonsumsi tiap jenis hewan per hari.
    */
-  static public float consumerate;
+  public static float consumerate;
 }

@@ -63,7 +63,7 @@ class AnimalTest {
   @Test
   void isTamed() {
     Animal bekantan = new Animal("Bekantan", 2, 3);
-    assertTrue(bekantan.IsTamed());
+    assertTrue(bekantan.isTamed());
   }
 
   @Test
@@ -76,27 +76,27 @@ class AnimalTest {
   void distLocX() {
     Animal bekantan = new Animal("Bekantan", 2, 3);
     Animal ayam = new Animal("Elang", 2, 4);
-    assertTrue(!bekantan.DistLocX(ayam));
+    assertTrue(!bekantan.distLocX(ayam));
   }
 
   @Test
   void distLocY() {
     Animal bekantan = new Animal("Bekantan", 2, 3);
     Animal ayam = new Animal("Elang", 3, 3);
-    assertTrue(!bekantan.DistLocY(ayam));
+    assertTrue(!bekantan.distLocY(ayam));
   }
 
   @Test
   void distLoc() {
     Animal bekantan = new Animal("Bekantan", 2, 3);
     Animal ayam = new Animal("Elang", 2, 3);
-    assertTrue(!bekantan.DistLoc(ayam));
+    assertTrue(!bekantan.distLoc(ayam));
   }
 
   @Test
   void interact() {
     Animal ayam = new Animal("Elang", 3, 3);
-    assertTrue(ayam.Interact() == "Koak koakk koakk");
+    assertTrue(ayam.interact() == "Koak koakk koakk");
   }
 
 }
