@@ -3,7 +3,6 @@ import building.Zoo;
 
 import java.io.*;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.Vector;
 
 import static animal.Animal.getNAnimal;
@@ -453,9 +452,6 @@ public class Driver {
           }
         }
       }
-      System.out.println("Press \"ENTER\" to continue...");
-      Scanner scanner = new Scanner(System.in);
-      scanner.nextLine();
     }
   }
 

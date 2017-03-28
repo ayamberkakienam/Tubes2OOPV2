@@ -3,6 +3,7 @@ package building;
 import animal.Animal;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Created by Husnulzaki Wibisono Haryadi (13515005) on 3/28/17.
@@ -214,6 +215,7 @@ public class Zoo {
     }
     listCage[n].getCell()[nn].setCaged();
     listCage[n].incSize();
+    matCell[i][j].setCaged();
   }
 
   /**
@@ -270,107 +272,105 @@ public class Zoo {
    * @param n jumlah total hewan yang ada pada Zoo
    */
   public void createAnimal(char c, int i, int j, int n) {
-    if (matCell[i][j].getContent() == '#') {
-      if (matCell[i][j].isCaged()) {
-        int k = 0;
-        boolean found = false;
-        while (k < getNumCage() && !found) {
-          int l = 0;
-          while (l < listCage[k].getSize() && !found) {
-            if (listCage[k].getCell()[l].getX() == i && listCage[k].getCell()[l].getY() == j) {
-              found = true;
-            } else {
-              l++;
-            }
-          }
-          k++;
-        }
-        k--;
-        int area = listCage[k].getSize();
-        int max_n_animal = area * 3 / 10;
-        int n_animal = 0;
-        for (int ii = 0; ii < Animal.getNAnimal(); ii++) {
-          for (int jj = 0; jj < listCage[k].getSize(); jj++) {
-            if (listCage[k].getCell()[jj].getX() == listAnimal[ii].getLocX() && listCage[k].getCell()[jj].getY() == listAnimal[ii].getLocY()) {
-              n_animal++;
-            }
+    if (matCell[i][j].isCaged()) {
+      int k = 0;
+      boolean found = false;
+      while (k < getNumCage() && !found) {
+        int l = 0;
+        while (l < listCage[k].getSize() && !found) {
+          if (listCage[k].getCell()[l].getX() == i && listCage[k].getCell()[l].getY() == j) {
+            found = true;
+          } else {
+            l++;
           }
         }
-        if (n_animal < max_n_animal) {
-          switch (c) {
-            case 'A':
-              listAnimal[n] = new Animal("Bekantan", i, j);
-              break;
-            case 'B':
-              listAnimal[n] = new Animal("BurungHantu", i, j);
-              break;
-            case 'C':
-              listAnimal[n] = new Animal("Codot", i, j);
-              break;
-            case 'D':
-              listAnimal[n] = new Animal("Elang", i, j);
-              break;
-            case 'E':
-              listAnimal[n] = new Animal("Gajah", i, j);
-              break;
-            case 'F':
-              listAnimal[n] = new Animal("Gorilla", i, j);
-              break;
-            case 'G':
-              listAnimal[n] = new Animal("Harimau", i, j);
-              break;
-            case 'H':
-              listAnimal[n] = new Animal("Hiu", i, j);
-              break;
-            case 'I':
-              listAnimal[n] = new Animal("IkanTerbang", i, j);
-              break;
-            case 'J':
-              listAnimal[n] = new Animal("Jerapah", i, j);
-              break;
-            case 'K':
-              listAnimal[n] = new Animal("Kancil", i, j);
-              break;
-            case 'L':
-              listAnimal[n] = new Animal("Kepik", i, j);
-              break;
-            case 'M':
-              listAnimal[n] = new Animal("Kepiting", i, j);
-              break;
-            case 'N':
-              listAnimal[n] = new Animal("KumbangHutan", i, j);
-              break;
-            case 'O':
-              listAnimal[n] = new Animal("KupuKupu", i, j);
-              break;
-            case 'P':
-              listAnimal[n] = new Animal("Lobster", i, j);
-              break;
-            case 'Q':
-              listAnimal[n] = new Animal("LumbaLumba", i, j);
-              break;
-            case 'R':
-              listAnimal[n] = new Animal("MacanTutul", i, j);
-              break;
-            case 'S':
-              listAnimal[n] = new Animal("OwaOwa", i, j);
-              break;
-            case 'T':
-              listAnimal[n] = new Animal("PausSperma", i, j);
-              break;
-            case 'U':
-              listAnimal[n] = new Animal("Piranha", i, j);
-              break;
-            case 'V':
-              listAnimal[n] = new Animal("Platypus", i, j);
-              break;
-            case 'W':
-              listAnimal[n] = new Animal("Singa", i, j);
-              break;
-            case 'X':
-              listAnimal[n] = new Animal("SingaLaut", i, j);
-              break;
+        k++;
+      }
+      k--;
+      int area = listCage[k].getSize();
+      int max_n_animal = area * 3 / 10;
+      int n_animal = 0;
+      for (int ii = 0; ii < Animal.getNAnimal(); ii++) {
+        for (int jj = 0; jj < listCage[k].getSize(); jj++) {
+          if (listCage[k].getCell()[jj].getX() == listAnimal[ii].getLocX() && listCage[k].getCell()[jj].getY() == listAnimal[ii].getLocY()) {
+            n_animal++;
           }
+        }
+      }
+      if (n_animal < max_n_animal) {
+        switch (c) {
+          case 'A':
+            listAnimal[n] = new Animal("Bekantan", i, j);
+            break;
+          case 'B':
+            listAnimal[n] = new Animal("BurungHantu", i, j);
+            break;
+          case 'C':
+            listAnimal[n] = new Animal("Codot", i, j);
+            break;
+          case 'D':
+            listAnimal[n] = new Animal("Elang", i, j);
+            break;
+          case 'E':
+            listAnimal[n] = new Animal("Gajah", i, j);
+            break;
+          case 'F':
+            listAnimal[n] = new Animal("Gorilla", i, j);
+            break;
+          case 'G':
+            listAnimal[n] = new Animal("Harimau", i, j);
+            break;
+          case 'H':
+            listAnimal[n] = new Animal("Hiu", i, j);
+            break;
+          case 'I':
+            listAnimal[n] = new Animal("IkanTerbang", i, j);
+            break;
+          case 'J':
+            listAnimal[n] = new Animal("Jerapah", i, j);
+            break;
+          case 'K':
+            listAnimal[n] = new Animal("Kancil", i, j);
+            break;
+          case 'L':
+            listAnimal[n] = new Animal("Kepik", i, j);
+            break;
+          case 'M':
+            listAnimal[n] = new Animal("Kepiting", i, j);
+            break;
+          case 'N':
+            listAnimal[n] = new Animal("KumbangHutan", i, j);
+            break;
+          case 'O':
+            listAnimal[n] = new Animal("KupuKupu", i, j);
+            break;
+          case 'P':
+            listAnimal[n] = new Animal("Lobster", i, j);
+            break;
+          case 'Q':
+            listAnimal[n] = new Animal("LumbaLumba", i, j);
+            break;
+          case 'R':
+            listAnimal[n] = new Animal("MacanTutul", i, j);
+            break;
+          case 'S':
+            listAnimal[n] = new Animal("OwaOwa", i, j);
+            break;
+          case 'T':
+            listAnimal[n] = new Animal("PausSperma", i, j);
+            break;
+          case 'U':
+            listAnimal[n] = new Animal("Piranha", i, j);
+            break;
+          case 'V':
+            listAnimal[n] = new Animal("Platypus", i, j);
+            break;
+          case 'W':
+            listAnimal[n] = new Animal("Singa", i, j);
+            break;
+          case 'X':
+            listAnimal[n] = new Animal("SingaLaut", i, j);
+            break;
         }
       }
     }
@@ -500,5 +500,8 @@ public class Zoo {
       }
       System.out.println("");
     }
+    System.out.println("\nPress \"ENTER\" to continue...");
+    Scanner scanner = new Scanner(System.in);
+    scanner.nextLine();
   }
 }

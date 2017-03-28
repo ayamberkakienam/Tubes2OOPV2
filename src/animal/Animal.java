@@ -308,7 +308,7 @@ public class Animal {
         tamed = true;
         diet = "Insect";
         legs = 4;
-        content = 'Z';
+        content = 'V';
         suara = "Krr krr";
         break;
       }
@@ -334,7 +334,7 @@ public class Animal {
         tamed = false;
         diet = "Meat";
         legs = 0;
-        content = 'Y';
+        content = 'X';
         suara = "Ou ou ou";
         break;
       }
@@ -344,7 +344,6 @@ public class Animal {
     loc_y = y;
     n_animal++;
     consumerate += fodder;
-    n_animal++;
   }
   /** Menetapkan lokasi dari sebuah objek animal
    * @param x Letak hewan berdasarkan indeks baris map zoo
