@@ -6,21 +6,23 @@ package building;
  * <p>
  * Created by um on 27/03/17.
  */
-abstract public class Cell implements Renderable {
+public class Cell {
 
   private final int loc_x;
   private final int loc_y;
   private char content;
   private boolean caged;
+  private boolean entrance;
+  private boolean exit;
 
   /**
    * Default class constructor.
    */
   public Cell() {
-    this.loc_x = 0;
-    this.loc_y = 0;
-    this.content = '-';
-    this.caged = false;
+    loc_x = 0;
+    loc_y = 0;
+    content = '-';
+    caged = false;
   }
   /**
    * Class constructor dengan parameter absis dan ordinat
@@ -29,11 +31,60 @@ abstract public class Cell implements Renderable {
    * @param i absis lokasi cell
    * @param j ordinat lokasi cell
    */
-  public Cell(int i, int j) {
-    this.loc_x = i;
-    this.loc_y = j;
-    this.content = '-';
-    this.caged = false;
+  public Cell(String bangunan, int i, int j) {
+    switch (bangunan) {
+      case ("Park") :
+      {
+        content = '.';
+        entrance = false;
+        exit = false;
+      }
+      case ("Restaurant") :
+      {
+        content = '$';
+        entrance = false;
+        exit = false;
+      }
+      case ("Road") :
+      {
+        content = '+';
+        entrance = false;
+        exit = false;
+      }
+      case ("RoadEntrance") :
+      {
+        content = '=';
+        entrance = true;
+        exit = false;
+      }
+      case ("RoadExit") :
+      {
+        content = '=';
+        entrance = false;
+        exit = true;
+      }
+      case ("LandHabitat") :
+      {
+        content = '#';
+        entrance = false;
+        exit = false;
+      }
+      case ("WaterHabitat") :
+      {
+        content = '~';
+        entrance = false;
+        exit = false;
+      }
+      case ("AirHabitat") :
+      {
+        content = '*';
+        entrance = false;
+        exit = false;
+      }
+    }
+    caged = false;
+    loc_x = i;
+    loc_y = j;
   }
   /**
    * Mendapatkan content
@@ -41,15 +92,7 @@ abstract public class Cell implements Renderable {
    * @return content cell
    */
   public char getContent() {
-    return this.content;
-  }
-  /**
-   * Mengubah content
-   *
-   * @param content content merupakan satu karakter unik.
-   */
-  protected void setContent(char content) {
-    this.content = content;
+    return content;
   }
   /**
    * Mendapatkan lokasi absis
@@ -57,7 +100,7 @@ abstract public class Cell implements Renderable {
    * @return lokasi absis cell
    */
   public int getX() {
-    return this.loc_x;
+    return loc_x;
   }
   /**
    * Mendapatkan lokasi ordinat
@@ -65,7 +108,7 @@ abstract public class Cell implements Renderable {
    * @return lokasi ordinat cell
    */
   public int getY() {
-    return this.loc_y;
+    return loc_y;
   }
   /** @brief Mengembalikan nilai boolean jika habitat terletak dalam kandang atau tidak
    * @return boolean caged.
@@ -77,7 +120,7 @@ abstract public class Cell implements Renderable {
    *
    */
   public void setCaged() {
-    this.caged = true;
+    caged = true;
   }
   /**
    * Menampilkan informasi lokasi dan content cell
@@ -91,7 +134,6 @@ abstract public class Cell implements Renderable {
    * Mengembalikan content dari cell
    * @return karakter content pada cell
    */
-  @Override
   public char render() {
     return getContent();
   }

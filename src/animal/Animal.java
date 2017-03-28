@@ -321,6 +321,14 @@ public class Animal {
     n_animal++;
     consumerate += fodder;
   }
+  /** Menetapkan lokasi dari sebuah objek animal
+   * @param x Letak hewan berdasarkan indeks baris map zoo
+   * @param y Letak hewan berdasarkan indeks kolom map zoo
+   */
+  public void setLoc(int x, int y) {
+    loc_x = x;
+    loc_y = y;
+  }
   /** Menghasilkan nama hewan
    * @return string suara hewan.
    */
