@@ -319,7 +319,7 @@ public class Driver {
   }
 
   /**
-   * Mengarahkan user dalam melaksanakan tur keliling Zoo
+   * Mengarahkan user dalam melaksanakan tur keliling Zoo.
    */
   void tourZoo() {
     //x dan y adalah posisi awal "pengunjung"
