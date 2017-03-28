@@ -17,12 +17,7 @@ public class Zoo {
   private static final String ANSI_PURPLE = "\u001B[35m";
   private static final String ANSI_CYAN = "\u001B[36m";
   private static final String ANSI_WHITE = "\u001B[37m";
-  //  private int sizeBrs;
-//  private int sizeKol;
-//  private int numCage;
-//  private Cell[][] matCell;
-//  private Cage[] listCage;
-//  private Animal[] listAnimal;
+
   private int sizeBrs;
   private int sizeKol;
   private int numCage;
@@ -127,7 +122,7 @@ public class Zoo {
             j = 0;
             while (j < Animal.getNAnimal() && dist) {
               if (i != j) {
-                dist = listAnimal[i].DistLoc(listAnimal[j]);
+                dist = listAnimal[i].distLoc(listAnimal[j]);
               }
               j++;
             }
@@ -144,7 +139,7 @@ public class Zoo {
             j = 0;
             while (j < Animal.getNAnimal() && dist) {
               if (i != j) {
-                dist = listAnimal[i].DistLoc(listAnimal[j]);
+                dist = listAnimal[i].distLoc(listAnimal[j]);
               }
               j++;
             }
@@ -161,7 +156,7 @@ public class Zoo {
             j = 0;
             while (j < Animal.getNAnimal() && dist) {
               if (i != j) {
-                dist = listAnimal[i].DistLoc(listAnimal[j]);
+                dist = listAnimal[i].distLoc(listAnimal[j]);
               }
               j++;
             }
@@ -178,7 +173,7 @@ public class Zoo {
             j = 0;
             while (j < Animal.getNAnimal() && dist) {
               if (i != j) {
-                dist = listAnimal[i].DistLoc(listAnimal[j]);
+                dist = listAnimal[i].distLoc(listAnimal[j]);
               }
               j++;
             }
@@ -214,6 +209,7 @@ public class Zoo {
     }
     listCage[n].getCell()[nn].setCaged();
     listCage[n].incSize();
+    matCell[i][j].setCaged();
   }
 
   /**
@@ -258,6 +254,8 @@ public class Zoo {
       case '$':
         matCell[i][j] = new Cell("Restaurant", i, j);
         break;
+      default:
+        matCell[i][j] = new Cell("-", i, j);
     }
   }
 
@@ -287,16 +285,17 @@ public class Zoo {
         }
         k--;
         int area = listCage[k].getSize();
-        int max_n_animal = area * 3 / 10;
-        int n_animal = 0;
+        int maxNAnimal = area * 3 / 10;
+        int numAnimal = 0;
         for (int ii = 0; ii < Animal.getNAnimal(); ii++) {
           for (int jj = 0; jj < listCage[k].getSize(); jj++) {
-            if (listCage[k].getCell()[jj].getX() == listAnimal[ii].getLocX() && listCage[k].getCell()[jj].getY() == listAnimal[ii].getLocY()) {
-              n_animal++;
+            if (listCage[k].getCell()[jj].getY() == listAnimal[ii].getLocY()
+                && listCage[k].getCell()[jj].getX() == listAnimal[ii].getLocX()) {
+              numAnimal++;
             }
           }
         }
-        if (n_animal < max_n_animal) {
+        if (numAnimal < maxNAnimal) {
           switch (c) {
             case 'A':
               listAnimal[n] = new Animal("Bekantan", i, j);
@@ -370,6 +369,8 @@ public class Zoo {
             case 'X':
               listAnimal[n] = new Animal("SingaLaut", i, j);
               break;
+            default:
+              listAnimal[n] = new Animal("NULL", i, j);
           }
         }
       }
@@ -425,30 +426,39 @@ public class Zoo {
         char c = matCell[i][j].getContent();
         if (c == '*' || c == '#' || c == '~') {
           if (matCell[i][j].isCaged()) {
-            boolean ada_hewan = false;
-            int hewan_n = 0;
+            boolean adaHewan = false;
+            int hewanN = 0;
             for (int k = 0; k < Animal.getNAnimal(); k++) {
               if (listAnimal[k].getLocX() == i && listAnimal[k].getLocY() == j) {
-                ada_hewan = true;
-                hewan_n = k;
+                adaHewan = true;
+                hewanN = k;
               }
             }
-            if (i >= x1 && i <= x2 && j >= y1 && j <= y2) if (ada_hewan)
-              System.out.print(ANSI_PURPLE + listAnimal[hewan_n].getContent() + ANSI_RESET);
-            else System.out.print(ANSI_RED + c + ANSI_RESET);
+            if (i >= x1 && i <= x2 && j >= y1 && j <= y2) {
+              if (adaHewan) {
+                System.out.print(ANSI_PURPLE + listAnimal[hewanN].getContent() + ANSI_RESET);
+              } else {
+                System.out.print(ANSI_RED + c + ANSI_RESET);
+              }
+            }
           } else {
-            if (i >= x1 && i <= x2 && j >= y1 && j <= y2) System.out.print(c);
+            if (i >= x1 && i <= x2 && j >= y1 && j <= y2) {
+              System.out.print(c);
+            }
           }
         } else {
-          if (i >= x1 && i <= x2 && j >= y1 && j <= y2) if (c == '+') {
-            System.out.print(ANSI_WHITE + c + ANSI_RESET);
-          } else if (c == '.') {
-            System.out.print(ANSI_GREEN + c + ANSI_RESET);
-          } else if (c == '$') {
-            System.out.print(ANSI_YELLOW + c + ANSI_RESET);
-          } else {
-            System.out.print(c);
+          if (i >= x1 && i <= x2 && j >= y1 && j <= y2) {
+            if (c == '+') {
+              System.out.print(ANSI_WHITE + c + ANSI_RESET);
+            } else if (c == '.') {
+              System.out.print(ANSI_GREEN + c + ANSI_RESET);
+            } else if (c == '$') {
+              System.out.print(ANSI_YELLOW + c + ANSI_RESET);
+            } else {
+              System.out.print(c);
+            }
           }
+
         }
       }
       System.out.println("");
@@ -471,17 +481,20 @@ public class Zoo {
           char c = matCell[i][j].getContent();
           if (c == '*' || c == '#' || c == '~') {
             if (matCell[i][j].isCaged()) {
-              boolean ada_hewan = false;
-              int hewan_n = 0;
+              boolean adaHewan = false;
+              int hewanN = 0;
               for (int k = 0; k < Animal.getNAnimal(); k++) {
-                if (listAnimal[k].getLocX() == i && listAnimal[k].getLocY() == j) {
-                  ada_hewan = true;
-                  hewan_n = k;
+                if (listAnimal[k].getLocX() == i && listAnimal[k].getLocY()
+                    == j) {
+                  adaHewan = true;
+                  hewanN = k;
                 }
               }
-              if (ada_hewan)
-                System.out.print(ANSI_PURPLE + listAnimal[hewan_n].getContent() + ANSI_RESET);
-              else System.out.print(ANSI_RED + c + ANSI_RESET);
+              if (adaHewan) {
+                System.out.print(ANSI_PURPLE + listAnimal[hewanN].getContent() + ANSI_RESET);
+              } else {
+                System.out.print(ANSI_RED + c + ANSI_RESET);
+              }
             } else {
               System.out.print(c);
             }

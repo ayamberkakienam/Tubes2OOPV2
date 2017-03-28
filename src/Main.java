@@ -7,15 +7,24 @@ import java.util.Scanner;
 /**
  * Created by um on 28/03/17.
  */
+
+/**
+ * Main class.
+ */
 public class Main {
-  static public void main(String[] args) throws FileNotFoundException {
+  /**
+   * Main method.
+   * @param args arguments
+   * @throws FileNotFoundException exception
+   */
+  public static void main(String[] args) throws FileNotFoundException {
     Driver d = new Driver();
-    Scanner scan = new Scanner(System.in);
 
     System.out.println("Initialisation Cell..");
     d.initCell();
     d.getZoo().printZoo();
 
+    Scanner scan = new Scanner(System.in);
     System.out.println("Press \"ENTER\" to continue...");
     scan.nextLine();
 
@@ -38,7 +47,11 @@ public class Main {
     System.out.println("Press \"ENTER\" to continue...");
     scan.nextLine();
 
-    int pil, x1, x2, y1, y2;
+    int pil;
+    int x1;
+    int x2;
+    int y1;
+    int y2;
     String c = "a";
 
     do {
@@ -52,7 +65,8 @@ public class Main {
       pil = scan.nextInt();
       switch (pil) {
         case 1:
-          System.out.println("Zoo Size = " + d.getZoo().getSizeBrs() + "x" + d.getZoo().getSizeKol());
+          System.out.println("Zoo Size = " + d.getZoo().getSizeBrs() + "x" + d.getZoo()
+              .getSizeKol());
           System.out.print("Masukkan x1 = ");
           x1 = scan.nextInt();
           System.out.print("Masukkan y1 = ");
@@ -70,7 +84,7 @@ public class Main {
           }
           break;
         case 2:
-          d.TourZoo();
+          d.tourZoo();
           break;
         case 3:
           System.out.println("\033[H\033[J");
