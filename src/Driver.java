@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.Vector;
 
 /**
@@ -508,8 +509,9 @@ public class Driver {
           }
         }
       }
+      System.out.println("Press \"ENTER\" to continue...");
+      Scanner scanner = new Scanner(System.in);
+      scanner.nextLine();
     }
   }
-
-
 }
